@@ -18,9 +18,6 @@
         <div key="b" v-else class="text-center">
           <div class="film" v-for="list in lists" align="center" @click="addedMovie(list)">
             <div  style="position: relative;" align="center">
-              <!--<div class="infoDiv">-->
-                <!--<p class="infoIcon"><i class="fa fa-info-circle"></i><br><span>Click for details</span></p>-->
-              <!--</div>-->
               <img v-if="list.poster_path!==null" :src="url+list.poster_path" class="img-fluid" alt="">
               <img v-else class="img-fluid" src="/src/img.png" alt="">
             </div>
@@ -29,8 +26,28 @@
             </div>
           </div>
 
-          <div class="test">
-            <div style="width: 100%;height: 100%;background-color: #857063"></div>
+          <div style="display: flex;justify-content: center">
+            <div class="test">
+              <div style="width: 100%;height: 100%;background-color: #857063"></div>
+            </div>
+            <div class="test">
+              <div style="width: 100%;height: 100%;background-color: #857063"></div>
+            </div>
+            <div class="test">
+              <div style="width: 100%;height: 100%;background-color: #857063"></div>
+            </div>
+            <div class="test">
+              <div style="width: 100%;height: 100%;background-color: #857063"></div>
+            </div>
+            <div class="test">
+              <div style="width: 100%;height: 100%;background-color: #857063"></div>
+            </div>
+            <div class="test">
+              <div style="width: 100%;height: 100%;background-color: #857063"></div>
+            </div>
+            <div class="test">
+              <div style="width: 100%;height: 100%;background-color: #857063"></div>
+            </div>
           </div>
 
           <div class="containerNext">
@@ -190,25 +207,29 @@
     letter-spacing: 1px;
   }
   .film{
-    width: 200px;
-    height: 350px;
+    width: 250px;
+    height: 400px;
     display: inline-block;
-    margin: 10px 20px 20px;
+    padding:10px 20px 20px;
+    margin:5px;
     color: #8fa5ee;
-    padding: 20px;
     letter-spacing:2px;
     cursor: pointer;
     font-family: sans-serif;
-    font-size: 15px;
+    font-size: 12px;
     position : relative;
-    background-color: #004747;
+    transition: background-color .3s ease-in-out;
+    background-color: aqua;
+  }
+  .film img{
+    margin:20px;
   }
   .filmName{
     transition: color .4s ease-in-out;
   }
   .film:hover{
-    background-color: aliceblue;
-    padding: 30px;
+    background-color: #004747;
+    padding: 3px;
   }
   .film:hover .filmName{
     color: #42fff0;
