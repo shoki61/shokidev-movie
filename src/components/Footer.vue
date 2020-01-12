@@ -1,10 +1,10 @@
 <template>
   <footer>
     <div class="col-12 text-center">
-      <p class="title">Developed by</p>
+      <p class="title">Designed and developed by</p>
       <div class="titleTextDiv">
         <span class="titleText">Sohrat Jumadurdyyev ©2019 </span>
-        <a href="" class="fa fa-github"></a>
+        <a title="github" href="https://github.com/shoki61/shokidev-movie" target="_blank" class="fa fa-github"></a>
       </div>
       <p class="title">Powered by</p>
       <a href="https://www.themoviedb.org" target="_blank">
@@ -16,7 +16,6 @@
 </template>
 
 <script>
-
 </script>
 
 <style scoped>
@@ -35,21 +34,21 @@
     margin-left: 15px;
   }
   .fa-github:hover{
-    color: #aeaeae;
+    color: #8fa5ee;
   }
   .logo{
     height: 25px;
     margin-top: 5px;
   }
   .title{
-    color : #a0a0a0;
+    color : #bcbcbc;
     margin-bottom: 0;
     letter-spacing: 1px;
     font-weight: 400;
     font-size:15px;
   }
   .titleText{
-    color : #8a8a8a;
+    color : #909090;
     font-weight: 100;
     letter-spacing: 1px;
     font-size: 12px;
@@ -64,7 +63,7 @@
     text-decoration: none;
   }
   .titleText:hover{
-    color: #ededed;
+    color: #9bb1ff;
   }
   @media only screen and (min-device-width : 200px)and (max-device-width : 500px) {
     .title{
@@ -78,6 +77,10 @@
     }
     .fa-github{
       font-size: 50px;
+    }
+    footer{
+      padding:50px;
+      margin-top: 100px;
     }
   }
   @media only screen and (min-device-width : 500px)and (max-device-width : 1200px) {
@@ -93,6 +96,10 @@
     .fa-github{
       font-size: 45px;
       margin-left: 25px;
+    }
+    footer{
+      padding:50px;
+      margin-top: 100px;
     }
   }
 </style>

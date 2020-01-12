@@ -3,6 +3,7 @@
     <div class="container-fluid">
         <div class="mx-auto movieInfo">
           <div align="center">
+            <a href="#"></a>
             <img v-if="movie.poster_path!==null" class="img-fluid" :src="urlImage+movie.poster_path" alt="">
             <img v-else src="/src/img.png" class="img-fluid" alt="">
           </div>
@@ -29,11 +30,11 @@
     data(){
       return{
         movie : "",
-        urlImage : "https://image.tmdb.org/t/p/w500"
+        urlImage : "https://image.tmdb.org/t/p/w500",
       }
     },
       created(){
-        this.movie = JSON.parse(localStorage.getItem("movie"))
+        this.movie = JSON.parse(localStorage.getItem("movie"));
       },
     }
 

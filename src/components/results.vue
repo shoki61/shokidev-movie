@@ -15,7 +15,7 @@
              <div class="spinner-grow" role="status"></div>
            </div>
 
-           <div key="b" v-else class="text-center">
+           <div key="b" v-else class="text-center mt-5 pt-3">
              <div class="film" v-for="list in lists" align="center" @click="addedMovie(list)">
                <div  style="position: relative" align="center">
                  <div class="infoDiv">
@@ -26,6 +26,12 @@
                </div>
                <div class="row">
                  <p class="filmName mx-auto mt-3">{{list.title}}</p>
+               </div>
+             </div>
+             <div class="containerNext">
+               <div class="nextDiv">
+                 <a class="nextText" href="#" @click="decreasePage" v-if="page!==1"><i class="fa fa-angle-left pr-2"></i>Previous</a>
+                 <a class="nextText" href="#" @click="increasePage" >Next<i class="fa fa-angle-right pl-2 my-auto"></i></a>
                </div>
              </div>
            </div>
@@ -44,10 +50,11 @@
             img: [{img:"../img.png"}],
             search: localStorage.getItem("searchName"),
             inputName:"",
+            page:1
         }
     },
     created(){
-      axios.get("https://api.themoviedb.org/3/search/movie?api_key=01a8d328332172ec0363661a5a8d24b8&query="+localStorage.getItem("searchName"))
+      axios.get("https://api.themoviedb.org/3/search/movie?api_key=01a8d328332172ec0363661a5a8d24b8&query="+localStorage.getItem("searchName")+"&type=movie&page="+this.page)
          .then((response)=>{
           setTimeout(()=>{
             let data = response.data;
@@ -60,9 +67,42 @@
         }).catch(()=>{
           this.$router.push("/error")
       })
-
     },
     methods : {
+      decreasePage(){
+        this.page--;
+        this.lists = [];
+        axios.get("https://api.themoviedb.org/3/search/movie?api_key=01a8d328332172ec0363661a5a8d24b8&query="+localStorage.getItem("searchName")+"&type=movie&page="+this.page)
+                .then((response)=>{
+                  setTimeout(()=>{
+                    let data = response.data;
+                    if(data.results.length===0){
+                      this.$router.push("/error")
+                    }else{
+                      this.lists = data.results;
+                    }
+                  },1000)
+                }).catch(()=>{
+          this.$router.push("/error")
+        })
+      },
+      increasePage(){
+        this.page++;
+        this.lists = [];
+        axios.get("https://api.themoviedb.org/3/search/movie?api_key=01a8d328332172ec0363661a5a8d24b8&query="+localStorage.getItem("searchName")+"&type=movie&page="+this.page)
+                .then((response)=>{
+                  setTimeout(()=>{
+                    let data = response.data;
+                    if(data.results.length===0){
+                      this.$router.push("/error")
+                    }else{
+                      this.lists = data.results;
+                    }
+                  },1000)
+                }).catch(()=>{
+          this.$router.push("/error")
+        })
+      },
       send(){
         if(this.inputName!==""){
           localStorage.setItem("searchName", this.inputName);
@@ -84,6 +124,38 @@
 </script>
 
 <style scoped>
+  .nextDiv{
+    width: 90%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    height: 0;
+    margin: 50px auto 90px;
+  }
+  .nextText{
+    width: 130px;
+    height: 40px;
+    color:#8fa5ee;
+    border-radius: 100px;
+    border: 1px solid #8fa5ee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    font-weight: 100;
+    transition: background-color .2s ease-in-out,margin-top .3s ease-out;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .nextText:hover{
+    background-color: #b301ff;
+    color: #b3fdff;
+    border: 1px solid #b301ff;
+    position: relative;
+    margin-top: -15px;
+  }
   .fade-enter{
     opacity: 0;
   }
@@ -198,7 +270,7 @@
     font-size: 18px;
   }
   .film img{
-    border-radius: 3px;
+    border-radius: 5px;
   }
   @media only screen and (min-device-width : 200px)and (max-device-width : 500px) {
       .spinner-grow{
@@ -240,18 +312,32 @@
       h2{
         font-size: 55px;
         color: #4699ec;
-        margin:0!important;
+        margin:auto!important;
       }
       .film{
-        width:55%;
-        margin-bottom: 60px;
+        width:45%;
+        margin:5px 5px 70px;
       }
       img{
-        width: 100%;
+        width: 90%;
       }
       .filmName {
-        font-size: 55px;
+        font-size: 45px;
+        padding-right: 15px;
+        padding-left: 15px;
       }
+      .film img{
+          border-radius: 10px;
+      }
+    .nextText{
+      width: 250px;
+      height: 90px;
+      font-size: 40px;
+      border: 2px solid #8fa5ee;
+    }
+    .nextText{
+      margin-top: 0!important;
+    }
     }
   @media only screen and (min-device-width : 500px)and (max-device-width : 1200px) {
     .spinner-grow{
@@ -310,6 +396,18 @@
     }
     .infoDiv i{
       font-size: 70px;
+    }
+    .film img{
+        border-radius: 8px;
+    }
+    .nextText{
+      width: 230px;
+      height: 70px;
+      font-size: 30px;
+      border: 2px solid #8fa5ee;
+    }
+    .nextText{
+      margin-top: 0!important;
     }
   }
 </style>

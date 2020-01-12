@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
+  <nav class="navbar fixed-top navbar-expand">
     <a class="navbar-brand" href="#" @click="clear">shokidev-movie</a>
   </nav>
 
@@ -24,7 +24,11 @@
 
 <style scoped>
 .navbar{
-  box-shadow: 1px 1px 10px 3px rgba(17, 17, 17, 0.97);
+  box-shadow: #090912;
+  background-color: #271e3d;
+}
+.navbar-brand{
+  color: #4fb0ff !important;
 }
 @media only screen and (min-device-width : 200px)and (max-device-width : 500px) {
   .navbar{

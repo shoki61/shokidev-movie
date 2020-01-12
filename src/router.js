@@ -14,6 +14,8 @@ export const router = new VueRouter({
     {path : "/results", component : results},
     {path : "/movie", component : movie},
     {path : "/error", component : Error},
-    {path : "*", result : movies}
+    {path : "*", component : movies},
+    {path : ":id", component : movies}
   ]
+
 });

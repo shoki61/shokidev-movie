@@ -1,40 +1,47 @@
 <template>
-  <div class="container-fluid">
-    <nav class="mt-3">
-      <button  disabled><i class="fa fa-search"></i></button>
-      <input type="text"
-             v-model="inputName"
-             placeholder="search movie..."
-             @keydown.enter="send"
-      >
-    </nav>
-    <h1 class="popularText mt-3">Popular movies</h1>
-    <transition name="fade" mode="out-in">
-      <div key="a" v-if="lists.length<=0" class="loadingDiv" align="center">
-        <div class="spinner-grow" role="status"></div>
-      </div>
+  <div>
+    <div class="container-fluid">
+      <nav class="mt-3">
+        <button  disabled><i class="fa fa-search"></i></button>
+        <input type="text"
+               v-model="inputName"
+               placeholder="search movie..."
+               @keydown.enter="send"
+        >
+      </nav>
+      <h1 class="popularText mt-3">Popular movies</h1>
+      <transition name="fade" mode="out-in">
+        <div key="a" v-if="lists.length<=0" class="loadingDiv" align="center">
+          <div class="spinner-grow" role="status"></div>
+        </div>
 
-      <div key="b" v-else class="text-center">
-        <div class="film" v-for="list in lists" align="center" @click="addedMovie(list)">
-          <div  style="position: relative;" align="center">
-            <div class="infoDiv">
-              <p class="infoIcon"><i class="fa fa-info-circle"></i><br><span>Click for details</span></p>
+        <div key="b" v-else class="text-center">
+          <div class="film" v-for="list in lists" align="center" @click="addedMovie(list)">
+            <div  style="position: relative;" align="center">
+              <!--<div class="infoDiv">-->
+                <!--<p class="infoIcon"><i class="fa fa-info-circle"></i><br><span>Click for details</span></p>-->
+              <!--</div>-->
+              <img v-if="list.poster_path!==null" :src="url+list.poster_path" class="img-fluid" alt="">
+              <img v-else class="img-fluid" src="/src/img.png" alt="">
             </div>
-            <img v-if="list.poster_path!==null" :src="url+list.poster_path" class="img-fluid" alt="">
-            <img v-else class="img-fluid" src="/src/img.png" alt="">
+            <div class="row">
+              <p class="filmName mx-auto mt-3">{{list.title}}</p>
+            </div>
           </div>
-          <div class="row">
-            <p class="filmName mx-auto mt-3">{{list.title}}</p>
+
+          <div class="test">
+            <div style="width: 100%;height: 100%;background-color: #857063"></div>
+          </div>
+
+          <div class="containerNext">
+            <div class="nextDiv">
+              <a class="nextText" href="#"  @click="decreasePage"  v-if="$store.state.page!==1"><i class="fa fa-angle-left pr-2"></i>Previous</a>
+              <a class="nextText" href="#" @click="increasePage" >Next<i class="fa fa-angle-right pl-2 my-auto"></i></a>
+            </div>
           </div>
         </div>
-        <div class="containerNext">
-          <div class="nextDiv">
-            <p class="nextText"  @click="decreasePage"  v-if="$store.state.page!==1"><i class="fa fa-angle-left pr-2"></i>Previous</p>
-            <p class="nextText" @click="increasePage" >Next<i class="fa fa-angle-right pl-2 my-auto"></i></p>
-          </div>
-        </div>
-      </div>
-    </transition>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -97,6 +104,20 @@
 </script>
 
 <style scoped>
+  .test{
+    padding: 30px;
+    background-color: #c7b9a7;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    transition: padding .3s ease-in;
+  }
+  .test:hover{
+    padding:10px;
+  }
   .fade-enter{
     opacity: 0;
   }
@@ -169,48 +190,51 @@
     letter-spacing: 1px;
   }
   .film{
-    width: 180px;
+    width: 200px;
+    height: 350px;
     display: inline-block;
     margin: 10px 20px 20px;
     color: #8fa5ee;
+    padding: 20px;
     letter-spacing:2px;
     cursor: pointer;
     font-family: sans-serif;
     font-size: 15px;
     position : relative;
+    background-color: #004747;
   }
   .filmName{
     transition: color .4s ease-in-out;
   }
-  .film:hover .infoDiv{
-    opacity: 1;
+  .film:hover{
+    background-color: aliceblue;
+    padding: 30px;
   }
   .film:hover .filmName{
     color: #42fff0;
-    text-decoration: underline;
   }
-  .infoDiv{
-    position: absolute;
-    width: 100%;
-    background: linear-gradient(-50deg, rgb(0, 0, 0),rgba(110, 7, 128, 0.65), rgba(246, 250, 255, 0.6));
-    height: 100%;
-    border-radius: 3px;
-    opacity: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity .4s ease-in-out;
-  }
-  .infoIcon{
-    font-size: 35px;
-    color : whitesmoke;
-  }
+  /*.infoDiv{*/
+    /*position: absolute;*/
+    /*width: 100%;*/
+    /*background: linear-gradient(-50deg, rgb(0, 0, 0),rgba(110, 7, 128, 0.65), rgba(246, 250, 255, 0.6));*/
+    /*height: 100%;*/
+    /*border-radius: 3px;*/
+    /*opacity: 0;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*transition: opacity .4s ease-in-out;*/
+  /*}*/
+  /*.infoIcon{*/
+    /*font-size: 35px;*/
+    /*color : whitesmoke;*/
+  /*}*/
   span{
     font-size: 15px;
     font-weight: 100!important;
   }
   .film img{
-    border-radius: 3px;
+    border-radius: 5px;
   }
   .containerNext{
     width: 100%;
@@ -237,8 +261,9 @@
     align-items: center;
     letter-spacing: 1px;
     font-weight: 100;
-    transition: background-color .3s ease-in-out,margin-top .3s ease-in-out;
+    transition: background-color .2s ease-in-out,margin-top .2s ease-out;
     cursor: pointer;
+    text-decoration: none;
   }
   .nextText:hover{
     background-color: #b301ff;
@@ -290,6 +315,9 @@
       width:45%;
       margin: 5px 5px 60px;
     }
+    .film img{
+      border-radius: 10px!important;
+    }
     img{
       width: 90%;
     }
@@ -302,6 +330,10 @@
       width: 250px;
       height: 90px;
       font-size: 40px;
+      border: 2px solid #8fa5ee;
+    }
+    .nextText{
+      margin-top: 0!important;
     }
     .popularText{
       font-size: 65px;
@@ -357,6 +389,9 @@
       width:35%;
       margin-bottom: 60px;
     }
+    .film img{
+      border-radius: 10px!important;
+    }
     img{
       width: 100%;
     }
@@ -367,6 +402,10 @@
       width: 230px;
       height: 70px;
       font-size: 30px;
+      border: 2px solid #8fa5ee;
+    }
+    .nextText{
+      margin-top: 0!important;
     }
     .popularText{
       font-size: 65px;
