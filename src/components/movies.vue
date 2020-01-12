@@ -9,7 +9,7 @@
                @keydown.enter="send"
         >
       </nav>
-      <h1 class="popularText mt-3">Popular movies</h1>
+      <h1 class="popularText mt-3 mb-4">Popular movies</h1>
       <transition name="fade" mode="out-in">
         <div key="a" v-if="lists.length<=0" class="loadingDiv" align="center">
           <div class="spinner-grow" role="status"></div>
@@ -174,8 +174,7 @@
     display: inline-flex;
     justify-content: center;
     flex-direction: column;
-    padding: 15px;
-    margin:5px;
+    margin:20px 5px;
     color: #8fa5ee;
     letter-spacing:2px;
     cursor: pointer;
@@ -185,14 +184,15 @@
     transition: background-color .3s ease-in-out;
   }
   .film img{
-    width: 170px;
+    width: 200px;
     transition:box-shadow .4s ease-in, width .4s ease-in;
   }
   .filmName{
     transition: color .4s ease-in-out;
+    padding:15px 60px;
   }
   .film:hover img{
-    width: 250px;
+    width: 230px;
     box-shadow:0 0 45px #3f6aa0;
   }
   span{
@@ -283,13 +283,12 @@
       border-radius: 10px!important;
     }
     img{
-      width:100%!important;
+      width:90%!important;
       box-shadow: none!important;
     }
     .filmName{
-      font-size: 45px;
-      padding-left: 15px;
-      padding-right: 15px;
+      font-size: 35px;
+      padding:0 40px!important;
     }
     .nextText{
       width: 250px;
@@ -300,14 +299,10 @@
     .nextText{
       margin-top: 0!important;
     }
-    .popularText{
+    .popularText {
       font-size: 65px;
-    }
-    .infoDiv span{
-      font-size: 30px;
-    }
-    .infoDiv i{
-      font-size: 70px;
+      margin-bottom: 60px !important;
+      padding-bottom: 20px !important;
     }
   }
   @media only screen and (min-device-width : 500px)and (max-device-width : 1200px) {
@@ -356,12 +351,12 @@
       border-radius: 10px!important;
     }
     img{
-      width:100%!important;
+      width:90%!important;
       box-shadow: none!important;
     }
     .filmName{
-      font-size: 32px;
-      padding: 0 50px;
+      font-size: 28px;
+      padding: 0 40px;
     }
     .nextText{
       width: 230px;
@@ -374,12 +369,8 @@
     }
     .popularText{
       font-size: 65px;
-    }
-    .infoDiv span{
-      font-size: 30px;
-    }
-    .infoDiv i{
-      font-size: 70px;
+      padding-bottom:20px!important;
+      margin-bottom:45px!important;
     }
   }
 </style>

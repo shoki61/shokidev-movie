@@ -18,9 +18,6 @@
            <div key="b" v-else class="text-center mt-5 pt-3">
              <div class="film" v-for="list in lists" align="center" @click="addedMovie(list)">
                <div  style="position: relative" align="center">
-                 <div class="infoDiv">
-                   <p class="infoIcon"><i class="fa fa-info-circle"></i><br><span>Click for details</span></p>
-                 </div>
                  <img v-if="list.poster_path!==null" :src="url+list.poster_path" class="img-fluid" >
                  <img v-else class="img-fluid" src="/src/img.png" alt="">
                </div>
@@ -230,47 +227,34 @@
         min-height: 100vh;
     }
   .film{
-    width: 200px;
-    display: inline-block;
-    margin: 60px 20px 20px;
+    width: 250px;
+    height: 380px;
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    margin:20px 5px;
     color: #8fa5ee;
     letter-spacing:2px;
     cursor: pointer;
     font-family: sans-serif;
     font-size: 15px;
     position : relative;
+    transition: background-color .3s ease-in-out;
+  }
+  .film img{
+    width: 200px;
+    transition:box-shadow .4s ease-in, width .4s ease-in;
   }
   .filmName{
     transition: color .4s ease-in-out;
+    padding:15px 60px;
   }
-  .film:hover .infoDiv{
-    opacity: 1;
-  }
-  .film:hover .filmName{
-    text-decoration: underline ;
-    color: #42fff0;
-  }
-  .infoDiv{
-    position: absolute;
-    width: 100%;
-    background: linear-gradient(-50deg, rgb(0, 0, 0),rgba(110, 7, 128, 0.65), rgba(246, 250, 255, 0.6));
-    height: 100%;
-    border-radius: 3px;
-    opacity: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity .4s ease-in-out;
-  }
-  .infoIcon{
-    font-size: 35px;
-    color : whitesmoke;
+  .film:hover img{
+    width: 230px;
+    box-shadow:0 0 45px #3f6aa0;
   }
   span{
     font-size: 18px;
-  }
-  .film img{
-    border-radius: 5px;
   }
   @media only screen and (min-device-width : 200px)and (max-device-width : 500px) {
       .spinner-grow{
@@ -289,15 +273,12 @@
       .film:hover .filmName{
       text-decoration: none!important;
       color: #8fa5ee;
-    }
+      }
       input{
         font-size: 50px;
         border: 2px solid #8fa5ee!important;
         border-left:transparent!important;
         height: auto;
-      }
-      .infoDiv{
-        display: none;
       }
       button{
         height: auto;
@@ -316,38 +297,36 @@
       }
       .film{
         width:45%;
-        margin:5px 5px 70px;
+        height:auto;
+        margin: 5px 5px 60px;
       }
       img{
-        width: 90%;
+        width:90%!important;
+        box-shadow: none!important;
       }
-      .filmName {
-        font-size: 45px;
-        padding-right: 15px;
-        padding-left: 15px;
+      .filmName{
+        font-size: 35px;
+        padding:0 40px!important;
       }
       .film img{
           border-radius: 10px;
       }
-    .nextText{
-      width: 250px;
-      height: 90px;
-      font-size: 40px;
-      border: 2px solid #8fa5ee;
-    }
-    .nextText{
-      margin-top: 0!important;
-    }
-    }
+      .nextText{
+        width: 250px;
+        height: 90px;
+        font-size: 40px;
+        border: 2px solid #8fa5ee;
+      }
+      .nextText{
+        margin-top: 0!important;
+      }
+  }
   @media only screen and (min-device-width : 500px)and (max-device-width : 1200px) {
     .spinner-grow{
       width: 120px;
       height: 120px;
       margin-top: 150px;
       background-color: #8fa5ee;
-    }
-    .infoDiv{
-      display: none;
     }
     .film:hover .filmName{
       text-decoration: none!important;
@@ -382,23 +361,18 @@
       margin:0!important;
     }
     .film{
-      width:35%;
-      margin-bottom: 60px;
+      width:30%;
+      height:auto;
+      margin: 5px 5px 60px;
     }
     img{
-      width: 100%;
+      width:90%!important;
+      box-shadow: none!important;
+      border-radius: 7px;
     }
-    .filmName {
-      font-size: 37px;
-    }
-    .infoDiv span{
-      font-size: 30px;
-    }
-    .infoDiv i{
-      font-size: 70px;
-    }
-    .film img{
-        border-radius: 8px;
+    .filmName{
+      font-size: 28px;
+      padding: 0 40px;
     }
     .nextText{
       width: 230px;
