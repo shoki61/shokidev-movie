@@ -26,30 +26,6 @@
             </div>
           </div>
 
-          <div style="display: flex;justify-content: center">
-            <div class="test">
-              <div style="width: 100%;height: 100%;background-color: #857063"></div>
-            </div>
-            <div class="test">
-              <div style="width: 100%;height: 100%;background-color: #857063"></div>
-            </div>
-            <div class="test">
-              <div style="width: 100%;height: 100%;background-color: #857063"></div>
-            </div>
-            <div class="test">
-              <div style="width: 100%;height: 100%;background-color: #857063"></div>
-            </div>
-            <div class="test">
-              <div style="width: 100%;height: 100%;background-color: #857063"></div>
-            </div>
-            <div class="test">
-              <div style="width: 100%;height: 100%;background-color: #857063"></div>
-            </div>
-            <div class="test">
-              <div style="width: 100%;height: 100%;background-color: #857063"></div>
-            </div>
-          </div>
-
           <div class="containerNext">
             <div class="nextDiv">
               <a class="nextText" href="#"  @click="decreasePage"  v-if="$store.state.page!==1"><i class="fa fa-angle-left pr-2"></i>Previous</a>
@@ -121,20 +97,6 @@
 </script>
 
 <style scoped>
-  .test{
-    padding: 30px;
-    background-color: #c7b9a7;
-    width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    transition: padding .3s ease-in;
-  }
-  .test:hover{
-    padding:10px;
-  }
   .fade-enter{
     opacity: 0;
   }
@@ -208,48 +170,31 @@
   }
   .film{
     width: 250px;
-    height: 400px;
-    display: inline-block;
-    padding:10px 20px 20px;
+    height: 380px;
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
     margin:5px;
     color: #8fa5ee;
     letter-spacing:2px;
     cursor: pointer;
     font-family: sans-serif;
-    font-size: 12px;
+    font-size: 15px;
     position : relative;
     transition: background-color .3s ease-in-out;
-    background-color: aqua;
   }
   .film img{
-    margin:20px;
+    width: 170px;
+    transition:box-shadow .4s ease-in, width .4s ease-in;
   }
   .filmName{
     transition: color .4s ease-in-out;
   }
-  .film:hover{
-    background-color: #004747;
-    padding: 3px;
+  .film:hover img{
+    width: 250px;
+    box-shadow:0 0 45px #3f6aa0;
   }
-  .film:hover .filmName{
-    color: #42fff0;
-  }
-  /*.infoDiv{*/
-    /*position: absolute;*/
-    /*width: 100%;*/
-    /*background: linear-gradient(-50deg, rgb(0, 0, 0),rgba(110, 7, 128, 0.65), rgba(246, 250, 255, 0.6));*/
-    /*height: 100%;*/
-    /*border-radius: 3px;*/
-    /*opacity: 0;*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*transition: opacity .4s ease-in-out;*/
-  /*}*/
-  /*.infoIcon{*/
-    /*font-size: 35px;*/
-    /*color : whitesmoke;*/
-  /*}*/
   span{
     font-size: 15px;
     font-weight: 100!important;
@@ -316,9 +261,6 @@
       border-left:transparent!important;
       height: auto;
     }
-    .infoDiv{
-      display: none;
-    }
     button{
       height: auto;
       padding: 3px 20px 3px 25px;
@@ -334,13 +276,15 @@
     }
     .film{
       width:45%;
+      height:auto;
       margin: 5px 5px 60px;
     }
     .film img{
       border-radius: 10px!important;
     }
     img{
-      width: 90%;
+      width:100%!important;
+      box-shadow: none!important;
     }
     .filmName{
       font-size: 45px;
@@ -397,9 +341,6 @@
       border:2px solid #8fa5ee;
       border-right: transparent!important;
     }
-    .infoDiv{
-      display: none;
-    }
     h1{
       font-size: 70px!important;
       margin: auto auto 30px;
@@ -407,17 +348,20 @@
       width: 70%;
     }
     .film{
-      width:35%;
-      margin-bottom: 60px;
+      width:30%;
+      height:auto;
+      margin: 5px 5px 60px;
     }
     .film img{
       border-radius: 10px!important;
     }
     img{
-      width: 100%;
+      width:100%!important;
+      box-shadow: none!important;
     }
     .filmName{
-      font-size: 37px;
+      font-size: 32px;
+      padding: 0 50px;
     }
     .nextText{
       width: 230px;
