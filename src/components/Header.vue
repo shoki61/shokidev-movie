@@ -1,6 +1,8 @@
 <template>
   <nav class="navbar fixed-top navbar-expand">
-    <a class="navbar-brand" href="#" @click="clear">shokidev-movie</a>
+    <a class="navbar-brand" href="#" @click="clear">
+      <img src="/src/assets/logo.png" alt="logo">
+    </a>
   </nav>
 
 </template>
@@ -25,7 +27,8 @@
 <style scoped>
 .navbar{
   box-shadow: #090912;
-  background-color: #271e3d;
+  background-color: rgba(39, 30, 61, 0.89);
+  padding-bottom: 0;
 }
 .navbar-brand{
   color: #4fb0ff !important;
@@ -37,13 +40,19 @@
   .navbar-brand{
     font-size: 50px;
   }
+  img{
+    height: 100px;
+  }
 }
 @media only screen and (min-device-width : 500px)and (max-device-width : 1200px) {
   .navbar{
-    height: 90px;
+    height: 100px;
   }
   .navbar-brand{
     font-size: 37px;
+  }
+  img{
+    height: 80px;
   }
 }
 

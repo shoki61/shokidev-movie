@@ -185,7 +185,7 @@
   }
   .film img{
     width: 200px;
-    transition:box-shadow .4s ease-in, width .4s ease-in;
+    transition:box-shadow .2s ease-in, width .2s ease-in;
   }
   .filmName{
     transition: color .4s ease-in-out;

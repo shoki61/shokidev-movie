@@ -35,6 +35,7 @@
     justify-content: center;
     padding-bottom: 7px;
     background-color: rgba(133, 175, 255, 0.72);
+    box-shadow: none!important;
   }
   .btn-to-top:hover{
     background-color: #9736ac;
